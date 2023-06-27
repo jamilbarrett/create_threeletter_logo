@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "inquirer": "^8.2.5"
+  },
+  "name": "create_threeletter_logo",
+  "description": "",
+  "version": "1.0.0",
+  "main": ".index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamilbarrett/create_threeletter_logo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamilbarrett/create_threeletter_logo/issues"
+  },
+  "homepage": "https://github.com/jamilbarrett/create_threeletter_logo#readme"
+}
