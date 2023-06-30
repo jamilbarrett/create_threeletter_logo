@@ -51,7 +51,8 @@ inquirer.prompt(userInput)
     }
 
     selectedShape.setColor(shapeColor)
-    console.log('user answers', answersObj)
+    selectedShape.setTextColor(textColor)
+    selectedShape.text = text
 
     const svgMarkup = `
       <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
@@ -59,7 +60,7 @@ inquirer.prompt(userInput)
       </svg>
     `
 
-
+    // Creates Markup file based on user input from above
     fs.writeFile('./logo.svg', svgMarkup, 'utf8', (err) => {
       if (err) throw err;
       console.log('Generated logo.svg');
