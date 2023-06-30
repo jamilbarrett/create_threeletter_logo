@@ -1,12 +1,14 @@
 {
   "dependencies": {
+    "color": "^4.2.3",
+    "color-name": "^2.0.0",
+    "colors": "^1.4.0",
     "inquirer": "^8.2.5"
   },
   "name": "create_threeletter_logo",
   "description": "",
   "version": "1.0.0",
   "main": ".index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

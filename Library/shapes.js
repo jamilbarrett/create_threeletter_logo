@@ -1,6 +1,7 @@
 class Shape {
     constructor() {
-        this.color = ''
+        this.color = '';
+        this.textColor ='';
     }
 
     setColor(color) {
@@ -10,6 +11,7 @@ class Shape {
 
 class Circle extends Shape {
     render() {
+      // <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
       return `<circle cx="150" cy="100" r="80" fill="${this.color}" />`;
     }
   }
