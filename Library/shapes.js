@@ -1,7 +1,9 @@
+const color = require('color')
+
+
 class Shape {
     constructor() {
         this.color = '';
-        this.textColor ='';
     }
 
     setColor(color) {
@@ -11,8 +13,8 @@ class Shape {
 
 class Circle extends Shape {
     render() {
-      // <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
-      return `<circle cx="150" cy="100" r="80" fill="${this.color}" />`;
+      `<text x="150" y="125" font-size="60" text-anchor="middle" fill${this.color}"></text>
+      return <circle cx="150" cy="100" r="80" fill="${this.color}" />`;
     }
   }
   
@@ -23,7 +25,8 @@ class Circle extends Shape {
   }
   class Square extends Shape {
     render() {
-      return `<rect points="150, 18 244, 182 56, 182" fill="${this.color}" />`;
+      return `<rect x="50" y="20" rx="20" ry="20" width="150" height="150"
+      style="fill${this.color}/>`;
     }
   }
 

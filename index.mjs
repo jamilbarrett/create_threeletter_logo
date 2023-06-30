@@ -1,30 +1,20 @@
-const inquirer = require('inquirer');
-const fs = require('fs');
-const { Circle, Triangle, Square } = require('./Library/shapes.js')
-const color = require('color')
+import inquirer from 'inquirer'
+import fs from 'fs'
+import { Circle, Triangle, Square } from './Library/shapes.js'
+import color from 'color-name';
+// const colorNames = Object.keys(color)
 
-console.log('red')
 
 // Prompt user for input
 const userInput = [
   {
     name: 'text',
     message: 'Please enter 3 characters',
-    validate: (input) => {
-      if (input.length > 3 || input.length < 3) {
-        return 'Please enter 3 characters';
-      } else {
-        return true
-      }
-    }
+    validate: (input) => (input.length !== 3) ? 'Please enter 3 characters' : true
   },
   {
     name: 'textColor',
     message: 'Please select the color of your text',
-    choices: (answers) => {
-      const colors = color(answers).map((color) => color.name)
-      return colors
-    }
   },
   {
     type: 'list',
@@ -35,9 +25,6 @@ const userInput = [
   {
     name: 'shapeColor',
     message: 'Please select the color of your chosen shape',
-    choices: (answers) => {
-      const colors = color(answers).map((color) => color.name)
-      return colors
   }
 ];
 
@@ -51,10 +38,28 @@ inquirer.prompt(userInput)
 
   // we can call a method from the class shape to set the color
   // shape.setColor(answers.shapeColor)
-  .then((answers) => {
-    const { text, textColor, shape, shapeColor } = answers;
-    const svgMarkup = `${text}, ${textColor}, ${shape}, ${shapeColor}`
-    console.log('user answers', answers)
+  .then((answersObj) => {
+    const { text, textColor, shape, shapeColor } = answersObj;
+    let selectedShape
+
+    if (shape === 'circle') {
+      selectedShape = new Circle
+    } else if (shape === 'square') {
+      selectedShape = new Square
+    } else if (shape === 'triangle') {
+      selectedShape = new Triangle
+    }
+
+    selectedShape.setColor(shapeColor)
+    console.log('user answers', answersObj)
+
+    const svgMarkup = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+        ${selectedShape.render()}
+      </svg>
+    `
+
+
     fs.writeFile('./logo.svg', svgMarkup, 'utf8', (err) => {
       if (err) throw err;
       console.log('Generated logo.svg');
