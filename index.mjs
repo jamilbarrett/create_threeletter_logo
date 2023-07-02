@@ -1,8 +1,7 @@
+// importing required modules
 import inquirer from 'inquirer'
 import fs from 'fs'
 import { Circle, Triangle, Square } from './Library/shapes.js'
-import color from 'color-name';
-// const colorNames = Object.keys(color)
 
 
 // Prompt user for input
@@ -33,21 +32,17 @@ inquirer.prompt(userInput)
   // get user answers
   // text, text color, shape, shape color
 
-  // user selects, shape, then user selects color, afterwards we will call the shape class
-  // let shape = new Circle
-
-  // we can call a method from the class shape to set the color
-  // shape.setColor(answers.shapeColor)
+  // user selects, shape, then user selects color
   .then((answersObj) => {
     const { text, textColor, shape, shapeColor } = answersObj;
-    let selectedShape
+    let selectedShape 
 
     if (shape === 'circle') {
-      selectedShape = new Circle
+      selectedShape = new Circle()
     } else if (shape === 'square') {
-      selectedShape = new Square
+      selectedShape = new Square()
     } else if (shape === 'triangle') {
-      selectedShape = new Triangle
+      selectedShape = new Triangle()
     }
 
     selectedShape.setColor(shapeColor)
@@ -57,6 +52,7 @@ inquirer.prompt(userInput)
     const svgMarkup = `
       <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
         ${selectedShape.render()}
+        <text x="150" y="125" font-size="60" text-anchor="middle" fill="${this.textColor}">${this.text}</text>
       </svg>
     `
 
